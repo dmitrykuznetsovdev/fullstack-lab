@@ -1,6 +1,6 @@
 # Этап 2. HTML, CSS и браузер
 
-[Каталог и правила сдачи](../README.md) · [Далее: TypeScript и React](../03-react-typescript/README.md)
+[Каталог и правила сдачи](../README.md) · [Далее: TypeScript, React, MobX и Rspack](../03-react-typescript/README.md)
 
 **До старта:** этап 1; разбор HTML, CSS, DOM и событий с наставником. Решение — `exercises/solutions/02-browser/`; обычные HTML/CSS/JS, без React и backend. Для просмотра достаточно локальной страницы; при необходимости сервер запускаем только на время занятия и затем останавливаем.
 
