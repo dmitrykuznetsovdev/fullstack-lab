@@ -1,6 +1,6 @@
 # Книги и авторы: что читать и когда
 
-[План](../README.md) · [Практика](../exercises/README.md)
+[План](../README.md) · [Практика](../exercises/README.md) · [Прогресс](../progress/README.md)
 
 Подборка проверена по страницам авторов и издателей **29 сентября 2026 года**. Годы относятся к указанным оригинальным изданиям; доступность и соответствие русских переводов отдельно не проверялись. Покупать всё не нужно: начать можно с бесплатных материалов. Рекомендации о порядке и сложности — наш методический выбор, а не обещание автора о результатах обучения.
 
@@ -18,6 +18,26 @@
 Для React основной материал — [официальный Learn](https://react.dev/learn): компоненты, состояние, события и управление состоянием. Ученик сразу применяет раздел в задании 3.2. Актуальную документацию выбранной версии используем для поведения API; год издания книги сам по себе не гарантирует соответствия инструментам проекта.
 
 Для SQL сначала [PostgreSQL Tutorial](https://www.postgresql.org/docs/current/tutorial.html): таблицы, запросы, соединения, агрегаты, транзакции. Этап 5 уже даёт практические задачи; отдельная большая книга по архитектуре данных пока не обязательна.
+
+## Обязательный стек: чтение под практику
+
+Frontend — React + TypeScript + MobX + Rspack; backend — NestJS + TypeScript. Точные версии закрепляем при создании решения, а не в плане. Ниже — официальные источники под конкретный шаг; читать только нужный раздел, затем применить его самостоятельно. Технические механизмы новых заданий сверены с официальной документацией 1 октября 2026 года; историческая проверка книжной подборки выше относится к 29 сентября.
+
+| Шаг | Что читать | Что объяснить и проверить в задании |
+| --- | --- | --- |
+| 3.1: типы после JS | [TypeScript: основы](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html) и [narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html) | Тип функции, unknown, проверка JSON во время выполнения и ошибка типов отдельно от теста правила |
+| 3.2: сначала React | [React Learn](https://react.dev/learn), [состояние](https://react.dev/learn/managing-state), [TypeScript в React](https://react.dev/learn/typescript) | Props, события, владелец состояния, устойчивый key; граница черновика формы и общего списка |
+| 3.2: Rspack | [Начало работы](https://www.rspack.dev/guide/start/quick-start), [React/TSX](https://www.rspack.dev/guide/integrations/react), [TypeScript](https://www.rspack.dev/guide/languages/typescript) | Entry/output, TSX/CSS, dev и production; преобразование TypeScript не заменяет отдельный tsc. Написать свою минимальную конфигурацию и просмотреть сборку |
+| 3.2: MobX | [Общий механизм](https://mobx.js.org/the-gist-of-mobx.html), [observable и makeAutoObservable](https://mobx.js.org/observable-state.html), [computed](https://mobx.js.org/computeds.html), [React integration](https://mobx.js.org/react-integration.html) | Общий store, производный список, actions; observer подписывается на observable, прочитанные при render. Воспроизвести потерянную подписку |
+| 3.3: асинхронность MobX | [Actions и async/await](https://mobx.js.org/actions.html), [реактивность](https://mobx.js.org/understanding-reactivity.html), [enforceActions](https://mobx.js.org/configuration.html#enforceactions) | Action-граница после await, последняя загрузка побеждает старую, ошибки/empty различимы; реакциям нужна очистка |
+| 4.1: HTTP до фреймворка | [MDN: HTTP overview](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview), [Node.js: введение](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs) | Метод, URL, тело, статус; браузер и сервер — разные среды, TS-типы не валидируют сетевой запрос |
+| 4.1: NestJS | [Controllers](https://docs.nestjs.com/controllers), [providers](https://docs.nestjs.com/providers), [modules](https://docs.nestjs.com/modules), [validation](https://docs.nestjs.com/techniques/validation) | Регистрация provider и DI, controller/service, DTO-класс и ValidationPipe, лишние поля и формат ошибки по контракту |
+| 4.3: ошибки и тесты NestJS | [Exception filters](https://docs.nestjs.com/exception-filters), [testing](https://docs.nestjs.com/fundamentals/testing) | Поведение Promise/try-catch, HTTP-код исключения, TestingModule, подмена provider и Supertest; закрытие тестового приложения |
+| 5: SQL в provider | [PostgreSQL Tutorial](https://www.postgresql.org/docs/current/tutorial.html), затем транзакции и блокировки под 5.3 | Параметры SQL, JOIN, ограничения и транзакция на независимых соединениях; NestJS DI сам по себе не обеспечивает целостность |
+| 6.1: серверные права | [NestJS guards](https://docs.nestjs.com/guards) и [authentication](https://docs.nestjs.com/security/authentication) | Проверенная личность на входе, доступ к конкретной записи в service, отказ прямому запросу. Это объяснение механизма; решение входа выбираем с наставником, собственную криптографию не пишем |
+| 6.2: проверки и выпуск | [Vitest](https://vitest.dev/guide/), [NestJS testing](https://docs.nestjs.com/fundamentals/testing), [Playwright](https://playwright.dev/docs/intro) | Различать тест store, HTTP/БД, сборку Rspack, сборку NestJS и наблюдение браузера; проверять собственную задачу подходящим способом |
+
+Библиотеки вводим последовательно, не одним большим стартовым шаблоном. Vitest проверяет frontend-логику отдельно от Rspack; Jest/Supertest — backend. Документация и пример автора помогают понять механизм, но не заменяют написанное ученицей решение и его защиту. Для короткого обсуждения использовать [сценарии на другом сюжете](../examples/README.md), не готовое решение задания.
 
 ## Тебе как наставнику
 
