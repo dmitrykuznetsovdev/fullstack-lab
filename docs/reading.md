@@ -21,6 +21,25 @@
 
 ## Обязательный стек: чтение под практику
 
+### Подготовка механизма и малая проверка
+
+Дополнения ниже сверены по официальным источникам 2 октября 2026 года. Исторические даты книжной подборки и прежней проверки инструментов сохраняются. Читать один нужный раздел, затем предсказать результат, сделать собственную малую пробу, запустить и объяснить изменение; готовый пример не подтверждает освоение.
+
+| Когда | Короткое чтение | Наблюдаемый результат |
+| --- | --- | --- |
+| Перед 1.1 | Основы, значения, функции и коллекции в [MDN JavaScript fundamentals](https://developer.mozilla.org/en-US/curriculum/core/javascript-fundamentals/) или соответствующие главы существующего учебника JS | Параметры/результат, условие, цикл и преобразование строки объяснены на собственной пробе с изменённой границей |
+| Внутри 1.3 | [MDN modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), async/await, Promise и ошибки в [JavaScript fundamentals](https://developer.mozilla.org/en-US/curriculum/core/javascript-fundamentals/) | Разделённая функция запускается, ошибка импорта найдена; прогноз порядка, успех/отказ и try/catch проверены |
+| Внутри 1.3, после локальной проверки | [GitHub Actions: первый workflow и его журнал](https://docs.github.com/en/actions/get-started/quickstart) | Одна существующая JS-проверка запускается на PR; ученица находит результат шага, объясняет событие/команду и проверяет падение на временной ошибке |
+| Перед 2.1 | [Семантический HTML](https://developer.mozilla.org/en-US/curriculum/core/semantic-html/), [основы CSS](https://developer.mozilla.org/en-US/curriculum/core/css-fundamentals/) и один нужный layout из [CSS layout](https://developer.mozilla.org/en-US/curriculum/core/css-layout/) | Назначение элементов, каскад/box model и переполнение объяснены в DevTools; свой малый layout проверен при 360 px и с клавиатуры |
+| Внутри 3.3 | JSON и [MDN: Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) | JS-значение отличается от JSON-строки; локально наблюдаются статус, разбор, сетевой отказ и некорректные данные. Внешний API не обязателен |
+| Внутри 4.1, до controller | [Node.js: ожидание и блокирующая работа](https://nodejs.org/en/learn/asynchronous-work/dont-block-the-event-loop), [File system: sync/Promise API](https://nodejs.org/api/fs.html) | Конечная проба до секунды объясняет порядок callbacks; малый собственный файл прочитан, отсутствие обработано, ресурсы и временные файлы убраны. Равенство миллисекунд не требуется |
+| Внутри 4.1–4.3 | [NestJS lifecycle](https://docs.nestjs.com/fundamentals/lifecycle-events) и раздел testing ниже | Свой процесс запущен/остановлен, ошибка порта объяснена; тестовое приложение закрыто после успеха и отказа, shutdown hooks по сигналу явно включены при использовании |
+| Внутри 5.1 | [PostgreSQL Tutorial: SQL и схема](https://www.postgresql.org/docs/current/tutorial-sql.html) | Собственная малая таблица, SELECT/INSERT/UPDATE, ключ/ограничение и параметр проверены до переноса API |
+| Внутри 5.2 | [JOIN](https://www.postgresql.org/docs/current/tutorial-join.html) и [агрегаты](https://www.postgresql.org/docs/current/tutorial-agg.html) | Строка без связи, фильтр и счёт объяснены по прогнозу и фактическому результату на другом наборе |
+| Внутри 5.3 | [Транзакции](https://www.postgresql.org/docs/current/tutorial-transactions.html), [блокировки](https://www.postgresql.org/docs/current/explicit-locking.html), [изоляция](https://www.postgresql.org/docs/current/transaction-iso.html) — только под свою пробу | Два независимых соединения показывают ожидание, commit/rollback и возврат ресурсов; граница транзакции отличается от доказательства защиты бизнес-правила |
+
+Это подготовка внутри существующих заданий, без нового обязательного курса или списка книг. Сложные справочные API не заучиваем. Перед React подтверждаем JS-пробы 1.3 и браузерную приёмку; знакомую реализацию можно делегировать по двум режимам после наблюдаемого подтверждения.
+
 Frontend — React + TypeScript + MobX + Rspack; backend — NestJS + TypeScript. Точные версии закрепляем при создании решения, а не в плане. Ниже — официальные источники под конкретный шаг; читать только нужный раздел, затем применить его самостоятельно. Технические механизмы новых заданий сверены с официальной документацией 1 октября 2026 года; историческая проверка книжной подборки выше относится к 29 сентября.
 
 | Шаг | Что читать | Что объяснить и проверить в задании |
@@ -33,11 +52,11 @@ Frontend — React + TypeScript + MobX + Rspack; backend — NestJS + TypeScript
 | 4.1: HTTP до фреймворка | [MDN: HTTP overview](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview), [Node.js: введение](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs) | Метод, URL, тело, статус; браузер и сервер — разные среды, TS-типы не валидируют сетевой запрос |
 | 4.1: NestJS | [Controllers](https://docs.nestjs.com/controllers), [providers](https://docs.nestjs.com/providers), [modules](https://docs.nestjs.com/modules), [validation](https://docs.nestjs.com/techniques/validation) | Регистрация provider и DI, controller/service, DTO-класс и ValidationPipe, лишние поля и формат ошибки по контракту |
 | 4.3: ошибки и тесты NestJS | [Exception filters](https://docs.nestjs.com/exception-filters), [testing](https://docs.nestjs.com/fundamentals/testing) | Поведение Promise/try-catch, HTTP-код исключения, TestingModule, подмена provider и Supertest; закрытие тестового приложения |
-| 5: SQL в provider | [PostgreSQL Tutorial](https://www.postgresql.org/docs/current/tutorial.html), затем транзакции и блокировки под 5.3 | Параметры SQL, JOIN, ограничения и транзакция на независимых соединениях; NestJS DI сам по себе не обеспечивает целостность |
+| 5: SQL в provider | [PostgreSQL Tutorial](https://www.postgresql.org/docs/current/tutorial.html) и подготовка 5.1–5.3 выше | Параметры SQL, JOIN, ограничения и транзакция на независимых соединениях; настоящая тестовая БД в CI, возврат соединений и закрытие пула/приложения даже после отказа |
 | 6.1: серверные права | [NestJS guards](https://docs.nestjs.com/guards) и [authentication](https://docs.nestjs.com/security/authentication) | Проверенная личность на входе, доступ к конкретной записи в service, отказ прямому запросу. Это объяснение механизма; решение входа выбираем с наставником, собственную криптографию не пишем |
 | 6.2: проверки и выпуск | [Vitest](https://vitest.dev/guide/), [NestJS testing](https://docs.nestjs.com/fundamentals/testing), [Playwright](https://playwright.dev/docs/intro) | Различать тест store, HTTP/БД, сборку Rspack, сборку NestJS и наблюдение браузера; проверять собственную задачу подходящим способом |
 
-Библиотеки вводим последовательно, не одним большим стартовым шаблоном. Vitest проверяет frontend-логику отдельно от Rspack; Jest/Supertest — backend. Документация и пример автора помогают понять механизм, но не заменяют написанное ученицей решение и его защиту. Для короткого обсуждения использовать [сценарии на другом сюжете](../examples/README.md), не готовое решение задания.
+Библиотеки вводим последовательно, не одним большим стартовым шаблоном. Vitest проверяет frontend-логику отдельно от Rspack; Jest/Supertest — backend. Документация и пример автора помогают понять механизм, но не заменяют собственную малую пробу нового и независимую защиту. После подтверждения объяснением, собственным изменением и наблюдаемой проверкой знакомую часть можно ограниченно поручить агенту с ревью и проверками по [двум режимам](../.ai/skills/fullstack-mentor/SKILL.md). Синтаксис/API можно смотреть; состояние, async, runtime validation, HTTP, права, транзакции и сбои проверяем действием. Углублённое устройство runtime и профилирование — по дальнейшим задачам. Для короткого обсуждения использовать [сценарии на другом сюжете](../examples/README.md), не готовое решение задания.
 
 ## Тебе как наставнику
 
