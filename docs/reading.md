@@ -19,6 +19,35 @@
 
 Для SQL сначала [PostgreSQL Tutorial](https://www.postgresql.org/docs/current/tutorial.html): таблицы, запросы, соединения, агрегаты, транзакции. Этап 5 уже даёт практические задачи; отдельная большая книга по архитектуре данных пока не обязательна.
 
+## Этап 0: терминал, Git и первый запуск
+
+Ссылки проверены 6 октября 2026 года: страницы открываются и соответствуют описанию. Русскоязычные источники указаны первыми, английские помечены (EN). Читать по одному разделу перед нужным заданием (15–25 минут), потом объяснить своими словами; незнакомые слова — в [глоссарии](glossary.md). Теорию и аналогии по любому из пунктов наставник даёт по запросу `/theory <ID>`.
+
+| Задание | Что читать | Что искать и объяснить |
+| --- | --- | --- |
+| 0.1–0.3, терминал | [MDN: Command line crash course](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Command_line) (EN) — разделы «Welcome to the terminal» и «Basic built-in terminal commands» | Что такое терминал; команды `cd`, `ls`, `mkdir`; почему команда выполняется буквально |
+| 0.1: что такое Git | Pro Git: [Что такое Git?](https://git-scm.com/book/ru/v2/Введение-Что-такое-Git%3F) | Снимки вместо списка изменений; три состояния файла: изменён, в индексе, закоммичен |
+| 0.1: файл → коммит | Pro Git: [Запись изменений в репозиторий](https://git-scm.com/book/ru/v2/Основы-Git-Запись-изменений-в-репозиторий) | `git status`, `git add`, `git diff`, `git commit`; как читать `diff` |
+| 0.1: push и remote | Pro Git: [Работа с удалёнными репозиториями](https://git-scm.com/book/ru/v2/Основы-Git-Работа-с-удалёнными-репозиториями) | Локальный и удалённый репозиторий, `origin`, push и pull |
+| 0.1: PR | [GitHub Docs: About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (EN) | Чем PR отличается от коммита и от merge; что значит «предложить изменения» |
+| 0.1: Markdown | [GitHub Docs: Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) (EN) — разделы Headings, Styling text, Lists, Links | Что значит `.md` и зачем файлы Markdown; почему не нужен в каждой папке |
+| 0.2: запуск кода | [Node.js: Run Node.js scripts from the command line](https://nodejs.org/en/learn/command-line/run-nodejs-scripts-from-the-command-line) (EN) — начало страницы про `node app.js` | Как запустить файл; чем Node.js отличается от консоли браузера |
+| 0.2: ошибка и консоль | [Современный учебник JavaScript: Отладка в браузере](https://learn.javascript.ru/debugging-chrome) — раздел «Консоль»; [MDN: What are browser developer tools?](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Tools_and_setup/What_are_browser_developer_tools) (EN) — раздел «The JavaScript console» | Как открыть консоль браузера; как найти файл и строку по сообщению об ошибке |
+| 0.3: ветки и слияние | Pro Git: [О ветвлении в двух словах](https://git-scm.com/book/ru/v2/Ветвление-в-Git-О-ветвлении-в-двух-словах) и [Основы ветвления и слияния](https://git-scm.com/book/ru/v2/Ветвление-в-Git-Основы-ветвления-и-слияния) | Ветка как подвижная метка; быстрая перемотка и слияние; чтение конфликта и маркеров `<<<<<<<` |
+| 0.3: откат правки | Pro Git: [Операции отмены](https://git-scm.com/book/ru/v2/Основы-Git-Операции-отмены) | Что вернёт `git restore` и что нельзя будет вернуть; сначала смотреть `git diff` |
+| 0.3 и цель первых двух недель: ветка и worktree | [Документация git-worktree](https://git-scm.com/docs/git-worktree) (EN) — описание и примеры | Worktree — отдельная рабочая папка того же репозитория с другой веткой; ветка сама по себе только метка |
+
+## Как просить теорию у наставника
+
+Наставник сам собирает материал из сети и собственных знаний, объясняет на русском и даёт проверенные ссылки (сценарий [theory](../.ai/skills/fullstack-mentor/workflows/theory.md); в Claude Code — `/theory`). Каждое занятие начинается с этого шага. Примеры запросов:
+
+- `/theory 0.3` — теория и чтение к заданию.
+- «Объясни, что такое diff, с бытовой аналогией, потом дай один раздел для чтения и задай два вопроса».
+- «Я не поняла X. Объясни по ступеням: аналогия, схема, пример на другом сюжете. После каждой ступени жди моего ответа».
+- «Дай чтение к заданию 1.1: названия разделов на русском и по одной ссылке на английском, порядок и время».
+
+Просите раздел и что в нём искать, а не просто «посоветуй книгу». Наставник открывает каждую ссылку перед выдачей; если он не смог её открыть, он должен так и сказать.
+
 ## Обязательный стек: чтение под практику
 
 ### Подготовка механизма и малая проверка

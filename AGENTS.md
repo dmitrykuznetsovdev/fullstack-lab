@@ -31,12 +31,13 @@ JavaScript → TypeScript. Frontend: React + TypeScript + MobX + Rspack. Backend
 | [exercises/README.md](exercises/README.md) | Каталог 24 заданий и правила сдачи |
 | `exercises/00-workflow/` … `exercises/07-project/` | Восьмиэтапная программа; README каждого этапа — источник условий и приёмки заданий |
 | [progress/README.md](progress/README.md) | Единственный источник состояний заданий, текущей задачи, подтверждённых навыков, затруднений, следующего шага и журнала занятий |
-| [docs/reading.md](docs/reading.md) | Порядок чтения и официальная документация под задания |
+| [docs/reading.md](docs/reading.md) | Порядок чтения и официальная документация под задания, включая этап 0 |
+| [docs/glossary.md](docs/glossary.md) | Термины простыми словами с бытовыми аналогиями |
 | [examples/README.md](examples/README.md) | Небольшие сценарии разбора на других данных; готовых решений нет |
 | `exercises/*/checks/`, `exercises/*/hints.md` | Автопроверка наставника по контракту задания и подсказки по ступеням; не образец решения |
 | [scripts/progress.mjs](scripts/progress.mjs) | Сверка прогресса с решениями и автопроверкой; `--check` в CI |
-| [.ai/skills/fullstack-mentor/workflows/](.ai/skills/fullstack-mentor/workflows/) | Сценарии `lesson`, `check`, `defend`, `review` и роль экзаменатора; не зависят от инструмента (Codex, Claude Code) |
-| `.claude/`, `.github/workflows/` | Тонкие обёртки Claude Code (`/lesson` и др., хук SessionStart) над теми же сценариями; CI автопроверки |
+| [.ai/skills/fullstack-mentor/workflows/](.ai/skills/fullstack-mentor/workflows/) | Сценарии `lesson`, `theory`, `check`, `defend`, `review` и роль экзаменатора; не зависят от инструмента (Codex, Claude Code). Теория и чтение на русском — шаг `theory`, обязательный в `lesson` |
+| `.claude/`, `.github/workflows/` | Тонкие обёртки Claude Code (`/lesson`, `/theory` и др., хук SessionStart) над теми же сценариями; CI автопроверки |
 | [docs/job-market-2026-09-29.md](docs/job-market-2026-09-29.md) | Исторический срез вакансий; не текущие требования и не источник выбора стека владельцем |
 | [.ai/skills/fullstack-mentor/SKILL.md](.ai/skills/fullstack-mentor/SKILL.md) | Проектный скилл, обязательный для всех агентов |
 | [Дизайн редакции](docs/superpowers/specs/2026-10-02-fullstack-course-26-weeks-design.md) и [план работ](docs/superpowers/plans/2026-10-02-fullstack-course-26-weeks.md) | Архив решений/редакторской реализации; не реестр учебного состояния |
