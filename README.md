@@ -186,7 +186,8 @@ docs/superpowers/specs/ — согласованный дизайн редакц
 docs/superpowers/plans/ — план редакторских работ
 exercises/*/checks/ — автопроверка наставника по контрактам заданий
 scripts/progress.mjs — сверка прогресса с фактами (CI и хук Claude Code)
-.claude/            — команды /lesson /check /defend /review, экзаменатор, хук начала сессии
+.ai/skills/fullstack-mentor/workflows/ — сценарии lesson, check, defend, review и роль экзаменатора (для любого агента)
+.claude/            — тонкие обёртки Claude Code над сценариями и хук начала сессии
 .github/workflows/  — CI автопроверки
 learning/          — заметки ученицы по заданиям
 exercises/solutions/ — решения ученицы
