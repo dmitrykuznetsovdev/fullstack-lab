@@ -17,5 +17,5 @@ jobs:
           node-version: 22
       - name: Автопроверка заданий
         run: node --test "exercises/*/checks/*.test.mjs"
-      - name: Прогресс сходится с фактами
+      - name: Учёт прогресса (ошибки валят, отставание — предупреждение)
         run: node scripts/progress.mjs --check

@@ -1,6 +1,8 @@
 // Сверяет progress/README.md с фактами репозитория: есть ли решение и проходит ли автопроверка.
 // «Принято» ставит человек после защиты, из файлов это не выводится, поэтому скрипт не генерирует
-// таблицу, а ищет расхождения. Флаги: --check — код 1 при расхождении (CI); --session — для хука SessionStart.
+// таблицу, а ищет расхождения. Ошибки (код 1 с --check, валят CI) — только то, что ломает сам учёт или завышает статус.
+// Предупреждения — отставание прогресса от решения: ученица не обязана править прогресс, это делает наставник.
+// Флаги: --check — код 1 при ошибках (CI); --session — для хука SessionStart и агентов без хуков.
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -31,6 +33,7 @@ function grade(id) {
 }
 
 const problems = [];
+const warnings = [];
 if (rows.length === 0) problems.push('в progress/README.md не найдены строки заданий вида «| 1.1 | … | … | … |»');
 for (const id of Object.keys(SOLUTIONS)) {
   if (!rows.some(row => row.id === id)) problems.push(`${id}: нет строки в таблице прогресса`);
@@ -43,7 +46,7 @@ for (const row of rows) {
   const passed = hasSolution ? grade(row.id) : null;
 
   if (!STATUSES.includes(row.status)) problems.push(`${row.id}: неизвестное состояние «${row.status}», допустимы: ${STATUSES.join(', ')}`);
-  if (hasSolution && row.status === 'Не начато') problems.push(`${row.id}: решение ${file} уже есть, а состояние «Не начато»`);
+  if (hasSolution && row.status === 'Не начато') warnings.push(`${row.id}: решение ${file} уже есть, а состояние «Не начато»`);
   if (row.status !== 'Не начато' && /^[—-]?$/.test(row.evidence)) problems.push(`${row.id}: состояние «${row.status}» без доказательства`);
   if (row.status === 'Принято' && passed === false) problems.push(`${row.id}: «Принято», но автопроверка падает`);
 
@@ -59,7 +62,12 @@ if (args.includes('--session')) {
 }
 console.log(lines.length ? lines.join('\n') : 'Начатых заданий нет.');
 console.log(`Не начато и без решения: ${rows.length - lines.length} из ${rows.length}.`);
+if (warnings.length) {
+  console.log(`\nПредупреждения (прогресс отстаёт от решения, наставник обновит строку на занятии):\n- ${warnings.join('\n- ')}`);
+  // Видно в сводке PR на GitHub, но проверку не валит.
+  if (process.env.GITHUB_ACTIONS) for (const w of warnings) console.log(`::warning title=Прогресс::${w}`);
+}
 if (problems.length) {
-  console.log(`\nРасхождения прогресса с фактами:\n- ${problems.join('\n- ')}`);
+  console.log(`\nОшибки учёта прогресса:\n- ${problems.join('\n- ')}`);
   if (args.includes('--check')) process.exitCode = 1;
 }
